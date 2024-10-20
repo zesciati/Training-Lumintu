@@ -1,0 +1,29 @@
+---
+
+import slugify from "../../../utilities/slugify.js";
+
+export async function getStaticPaths(){  //Permalink
+  const products = await fetch("http://localhost:8055/items/Produk?fields=harga,Deskripsi,Nama,id");
+  let products_json = await products.json();
+  products_json = products_json.data;
+  console.log(products_json);
+
+  return products_json.map((item) => {
+    return{
+      params:{
+          id: item.id,
+          nama_produk:slugify(item.Nama)
+      },
+      props:{
+        description:item.Deskripsi,
+        harga:item.harga
+      }
+    };
+  });
+}
+
+const{id, nama_produk} =Astro.params;
+const{description, harga} =Astro.props;
+---
+<p>Harga:{harga}</p>
+<p>{description}</p>

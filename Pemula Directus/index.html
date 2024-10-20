@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<p>halo</p>
+		<script>
+			const url = 'ws://0.0.0.0:8054/websocket';
+			const access_token = 'CNw6zoCS1-LalC2v8dqPSkjbjqfw_U6l';
+			const collection = 'messages';
+
+			// Step 1. Connect  
+
+      const connection = new WebSocket(url);
+
+      connection.addEventListener('open', function () {
+					console.log({ event: 'onopen' });
+
+			connection.send( 
+					JSON.stringify({ 
+						type: 'auth', 
+						access_token, 
+					}) 
+				); 
+			});		
+
+			connection.addEventListener('message', function (message) {
+				const data = JSON.parse(message.data);
+				console.log({ event: 'onmessage', data });
+			});
+
+			// connection.addEventListener('close', function () {
+			// 	console.log({ event: 'onclose' });
+			// });
+
+			// connection.addEventListener('error', function (error) {
+			// 	console.log({ event: 'onerror', error });
+			// });
+
+			// Step 3. Subscribe
+			function subscribe() {
+	connection.send(
+		JSON.stringify({
+			type: 'subscribe',
+			collection: 'messages',
+			query: { fields: ['*'] },
+		})
+	);
+}
+		</script>
+	</body>
+</html>
