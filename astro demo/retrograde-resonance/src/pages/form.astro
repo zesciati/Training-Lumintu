@@ -1,0 +1,32 @@
+
+<html>
+
+<body>
+  
+  <form action="">
+    <input type="text" id="item">
+    <button id="submit">Send</button>
+  </form>
+
+  <script is:inline>
+    document.getElementById("submit").addEventListener("click", async function(e){
+      e.preventDefault();
+
+      const api = await fetch("https://wilayah.lumintulogic.site/items/navbar",{
+        method: "POST",
+        headers: {
+          "Content-Type":"application/json" 
+        },
+        body:JSON.stringify({
+          item:document.getElementById("item").value
+        })
+      });
+
+      const id = await api.json();
+
+      console.log(id);
+    });
+  </script>
+
+</body>
+</html>
