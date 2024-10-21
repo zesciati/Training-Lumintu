@@ -561,6 +561,21 @@ products_json = products_json.data;
 
     <!-- Template Javascript -->
     <script is:inline src="js/main.js"></script>
+
+
+    <script is:inline>
+        async function callAJAX(){
+        const api = await fetch("https://wilayah.lumintulogic.site/items/navbar");
+        const data = await api.json();
+        const items = data.data;
+
+        const navbar = document.getElementById("navbarCollapse");
+        const home = navbar.getElementsByTagName("div")[0].getElementsByTagName("a")[0];
+        home.innerHTML = items[0].item;
+        }
+
+        callAJAX();
+    </script>
 </body>
 
 </html>
