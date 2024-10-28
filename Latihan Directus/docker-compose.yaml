@@ -60,7 +60,13 @@ services:
       ADMIN_EMAIL: "zaky@example.com"
       ADMIN_PASSWORD: "Z4ky_01"
 
-    
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "true"
+      CORS_METHOD: "GET, POST, PATCH, DELETE"
+      CORS_ALLOWED_HEADERS: "Content-Type, Authorization"
+      CORS_EXPOSE_HEADERS: "Content-Range"
+      CORS_CREDENTIAL: "true"
+      CORS_MAX_AGE: "18000"  # menyimpan jawaban dengan waktu yg ditentukan
 
 
       # Make sure to set this in production

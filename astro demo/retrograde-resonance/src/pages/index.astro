@@ -10,6 +10,8 @@ const title_json=await title.json();
 const products = await fetch("http://192.168.18.67:8055/items/Products");
 let products_json = await products.json();
 products_json = products_json.data;
+
+export const prerender = true;
 ---
 <!DOCTYPE html>
 <html lang="en">

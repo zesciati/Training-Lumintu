@@ -24,6 +24,8 @@ export async function getStaticPaths(){  //Permalink
 
 const{id, nama_produk} =Astro.params;
 const{description, harga} =Astro.props;
+
+export const prerender = true;
 ---
 <p>Harga:{harga}</p>
 <p>{description}</p>
