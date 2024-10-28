@@ -4,10 +4,10 @@
 const title2 = "this is title";
 const condition = true;
 
-const title = await fetch("http://localhost:8055/items/Website?fields=title");
+const title = await fetch("http://192.168.18.67:8055/items/Website?fields=title");
 const title_json=await title.json();
 
-const products = await fetch("http://localhost:8055/items/Produk?fields=harga,Deskripsi,Nama,id");
+const products = await fetch("http://192.168.18.67:8055/items/Products");
 let products_json = await products.json();
 products_json = products_json.data;
 ---
@@ -205,7 +205,8 @@ products_json = products_json.data;
             <div class="row g-4">
                 {products_json.map((item) => (
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-light rounded h-100 p-5">
+                    <div class="service-item  rounded h-100 p-5" style=`background-image: url('img/assets/${item.image}.webp'); background-size:contain; background-repeat: no-repeat`>
+
                         <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
                             <i class="fa fa-heartbeat text-primary fs-4"></i>
                         </div>
@@ -565,13 +566,13 @@ products_json = products_json.data;
 
     <script is:inline>
         async function callAJAX(){
-        const api = await fetch("https://wilayah.lumintulogic.site/items/navbar");
+        const api = await fetch("https://192.168.18.67:8055/items/Website");
         const data = await api.json();
         const items = data.data;
 
         const navbar = document.getElementById("navbarCollapse");
         const home = navbar.getElementsByTagName("div")[0].getElementsByTagName("a")[0];
-        home.innerHTML = items[0].item;
+        home.innerHTML = items.title;
         }
 
         callAJAX();

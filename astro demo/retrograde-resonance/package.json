@@ -5,12 +5,14 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "node .\\utilities\\downloadAssets.js && astro build",
     "preview": "astro preview",
-    "astro": "astro" 
+    "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.2"
+    "astro": "^4.16.2",
+    "fs": "^0.0.1-security",
+    "got": "^14.4.3",
+    "path": "^0.12.7"
   }
-
 }

@@ -10,20 +10,23 @@
 
   <script is:inline>
     document.getElementById("submit").addEventListener("click", async function(e){
+      // prevent default action from the form's submission(in this case, refresh page)
       e.preventDefault();
 
-      const api = await fetch("https://wilayah.lumintulogic.site/items/navbar",{
+      //post the data from the form to my backend
+      const api = await fetch("http://192.168.18.67:8055/items/Messages",{
         method: "POST",
         headers: {
           "Content-Type":"application/json" 
         },
         body:JSON.stringify({
-          item:document.getElementById("item").value
+          text:document.getElementById("item").value,
+          sender:"zaky"
         })
       });
-
+      // get response with data in JSON
       const id = await api.json();
-
+      //show JSON response on colse
       console.log(id);
     });
   </script>
