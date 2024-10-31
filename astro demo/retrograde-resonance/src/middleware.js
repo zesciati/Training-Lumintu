@@ -1,9 +1,8 @@
-import { defineMiddleware } from "astro:middleware";
+import { defineMiddleware } from "astro/middleware";
 
-export const onRequest = defineMiddleware(async (context,next)=>{
-  if(context.request.url.includes("/about/5")){
+export const onRequest = defineMiddleware(async (context, next) => {
+    if(context.request.url.includes("/about/5")){
         return context.redirect("/appointment");
-  };
-
-  return next();
+    };
+    return next();
 });

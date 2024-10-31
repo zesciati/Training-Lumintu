@@ -4,7 +4,7 @@ import path from 'path';
 
 const api = await fetch("http://192.168.18.67:8055/files");
 const res = await api.json();
-const content  = res.data;
+const content = res.data;
 
 const directory = "public/img/assets";
 
@@ -12,6 +12,7 @@ fs.readdir(directory, async(err, files) => {
     if (err) {
         throw err;
     }else {
+        //clearing up the contents of the location as specified in "directory"
         if(files.length>0){
             for(const file of files) {
                 await fs.unlink(path.join(directory, file), (err2) => {
@@ -22,9 +23,11 @@ fs.readdir(directory, async(err, files) => {
             }
             console.log(directory, "has been cleared");
         }
-
+        
+        //start downloading files
         if(content.length!==0){
             for (const item of content){
+                //get assets from the endpoint "/assets" and save to "directory"
                 const pathname = `${directory}/${item.id}.webp`;
                 const file = fs.createWriteStream(pathname);
                 const options = {
@@ -40,6 +43,6 @@ fs.readdir(directory, async(err, files) => {
                 })
             }
         }
-        //end of downloading
+        //end of downloading files
     }
 });
