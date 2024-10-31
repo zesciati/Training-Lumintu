@@ -3,6 +3,7 @@ const api = await fetch(`http://192.168.18.67:8055/items/Products/${Astro.params
 const res = await api.json();
 const about = res.data;
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -130,8 +131,8 @@ const about = res.data;
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="d-flex flex-column">
-                        <img class="/img-fluid rounded w-75 align-self-end" src="/img/about-1.jpg" alt="">
-                        <img class="/img-fluid rounded w-50 bg-white pt-3 pe-3" src="/img/about-2.jpg" alt="" style="margin-top: -25%;">
+                        <img class="img-fluid rounded w-75 align-self-end" src="/img/about-1.jpg" alt="">
+                        <img class="img-fluid rounded w-50 bg-white pt-3 pe-3" src="/img/about-2.jpg" alt="" style="margin-top: -25%;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
@@ -360,7 +361,7 @@ const about = res.data;
 
 
     <!-- JavaScript Libraries -->
-   <script is:inline src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script is:inline src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script is:inline src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script is:inline src="/lib/wow/wow.min.js"></script>
     <script is:inline src="/lib/easing/easing.min.js"></script>
@@ -370,7 +371,6 @@ const about = res.data;
     <script is:inline src="/lib/tempusdominus/js/moment.min.js"></script>
     <script is:inline src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script is:inline src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
     <!-- Template Javascript -->
     <script is:inline src="/js/main.js"></script>
 </body>

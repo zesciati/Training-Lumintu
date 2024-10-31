@@ -1,29 +1,28 @@
 ---
-
 import slugify from "../../../utilities/slugify.js";
 
-export async function getStaticPaths(){  //Permalink
-  const products = await fetch("http://localhost:8055/items/Produk?fields=harga,Deskripsi,Nama,id");
-  let products_json = await products.json();
-  products_json = products_json.data;
-  console.log(products_json);
+export async function getStaticPaths(){
+    const products = await fetch("http://192.168.18.67:8055/items/Products?fields=harga,description,nama_produk,id");
+    let products_json = await products.json();
+    products_json = products_json.data;
 
-  return products_json.map((item) => {
-    return{
-      params:{
-          id: item.id,
-          nama_produk:slugify(item.Nama)
-      },
-      props:{
-        description:item.Deskripsi,
-        harga:item.harga
-      }
-    };
-  });
+    return products_json.map((item) => {
+        return {
+            params:{
+                id:item.id,
+                nama_produk:slugify(item.nama_produk)
+            },
+            props:{
+                description:item.description,
+                harga:item.harga
+            }
+        }
+    });
+
 }
 
-const{id, nama_produk} =Astro.params;
-const{description, harga} =Astro.props;
+const {id, nama_produk} = Astro.params;
+const {description, harga} = Astro.props;
 
 export const prerender = true;
 ---

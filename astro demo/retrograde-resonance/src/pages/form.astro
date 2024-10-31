@@ -1,35 +1,33 @@
-
 <html>
+    <body>
+        <form>
+            <input type="text" id="item"></input>
+            <button id="submit" type="submit">sender</button>
+        </form>
 
-<body>
-  
-  <form action="">
-    <input type="text" id="item">
-    <button id="submit">Send</button>
-  </form>
+        <script is:inline>
+            document.getElementById("submit").addEventListener("click", async function(e){
+                e.preventDefault();
+                //prevent default action from the form's submission(in this case, refresh page)
 
-  <script is:inline>
-    document.getElementById("submit").addEventListener("click", async function(e){
-      // prevent default action from the form's submission(in this case, refresh page)
-      e.preventDefault();
+                //post the data from the form to cikuy's backend
+                const api = await fetch ("http://192.168.18.67:8055/items/Messages",{
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify({
+                        text:document.getElementById("item").value,
+                        sender: "araa"
+                    })
+                });
 
-      //post the data from the form to my backend
-      const api = await fetch("http://192.168.18.67:8055/items/Messages",{
-        method: "POST",
-        headers: {
-          "Content-Type":"application/json" 
-        },
-        body:JSON.stringify({
-          text:document.getElementById("item").value,
-          sender:"zaky"
-        })
-      });
-      // get response with data in JSON
-      const id = await api.json();
-      //show JSON response on colse
-      console.log(id);
-    });
-  </script>
+                //get response with data in JSON
+                const id = await api.json();
 
-</body>
+                //show JSON response on console
+                console.log(id);
+            });
+        </script>
+    </body>
 </html>
