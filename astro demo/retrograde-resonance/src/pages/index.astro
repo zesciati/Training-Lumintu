@@ -320,7 +320,7 @@ import Footer from '../layouts/footer.astro';
 
     <!-- Appointment Start -->
     <div class="container-xxl py-5">
-        <div class="container">
+        <div class="container ">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <p class="d-inline-block border rounded-pill py-1 px-4">Appointment</p>
@@ -470,8 +470,9 @@ import Footer from '../layouts/footer.astro';
         const home = navbar.getElementsByTagName("div")[0].getElementsByTagName("a")[0];
         home.innerHTML = items.title;
         }
-
+        
         callAJAX();
+      
     </script>
 </body>
 
