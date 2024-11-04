@@ -1,5 +1,25 @@
 ---
 import Header from '../layouts/header.astro';
+
+
+const api = await fetch("http://192.168.18.67:8055/items/Payment",{
+            headers:{
+                "Cookie":`directus_session_token=${Astro.locals.new_cookie}`
+    }
+});
+
+// if(api.status != 200){
+//     return new Response(
+//     req.statusText, {
+//     status: api.status
+//     // headers:{
+//     //   "Content-Type":"application/json"
+//     // }
+
+//   }
+//   )
+// };
+
 ---
 
 <!DOCTYPE html>
