@@ -10,8 +10,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
                 "mode":"session"
             }),
             headers:{
-                 "Content-Type":"application/json",
-                 "Cookie": `directus_session_token=${cookie}`
+                "Content-Type":"application/json",
+                "Cookie": `directus_session_token=${cookie}`
             }
         });
         if(req.status == 200){

@@ -1,6 +1,7 @@
 ---
 // this is FrontMatter
 // const title  = "Klinik - Clinic Website Template";
+import {getCookieHeader} from '../../utilities/cookies';
 const title2 = "this is title";
 const condition = true;
 
@@ -17,6 +18,10 @@ const about = {namaProduk: 'Hallo'};
 
 import Header from '../layouts/header.astro';
 import Footer from '../layouts/footer.astro';
+
+const cookie = 'directus_session_token'; // Ini ganti nilai cookie yang ada aja
+const headers = getCookieHeader(cookie);
+
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -472,7 +477,10 @@ import Footer from '../layouts/footer.astro';
         }
         
         callAJAX();
-      
+
+        
+
+
     </script>
 </body>
 
