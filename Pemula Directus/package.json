@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@directus/sdk": "^18.0.0",
+    "@directus/update-check": "^12.0.2"
+  }
+}
